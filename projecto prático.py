@@ -10,6 +10,7 @@ window.setWindowTitle('greeting')
 name_input = QLineEdit()
 name_input.setPlaceholderText("Enter your name...")
 
+input_field = QLineEdit()
 button = QPushButton('Greet')
 label = QLabel("")
 

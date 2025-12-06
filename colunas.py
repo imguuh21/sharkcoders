@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QPushButton,QLineEdit,QLabel,QHBoxLayout)
 
 left_layout = QHBoxLayout()
-
+left_layout.set
 
 
 
