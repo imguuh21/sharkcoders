@@ -19,7 +19,7 @@ class TelaClima(BoxLayout):
         cidade = self.ids.entrada.text.lower().strip()
         if cidade in DADOS_CLIMA:
            clima = DADOS_CLIMA[cidade]
-           self.resultado = f"{cidade.title}: {clima['temp']} - {clima['condicao']}"
+           self.resultado = f"{cidade.title()}: {clima['temp']} - {clima['condicao']}"
         else:
             self.resultado = f"clima para '{cidade.title()} ' não encontrado."
 
