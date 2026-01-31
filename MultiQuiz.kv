@@ -1,0 +1,18 @@
+#:kivy 1.0.9
+
+<Gerenciador>
+    TelaPrincipal:
+    TelaDetalhes:
+
+<TelaPrincipal>
+    name: 'principal'
+    lista: lista_Quizes
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Noticias'
+            size_hint_y: None
+            height: '40dp'
+            font_size: '20dp'
+    ListaQuizes:
+        id: lista_quizes
