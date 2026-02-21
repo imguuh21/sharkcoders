@@ -13,16 +13,57 @@ Quizes = [
     {"Título": "Quiz 4","Descrição": "Quiz sobre Ethical hacking", "detalhes": "Detalhes completos da notícia 4..."}
 ]
 
-pergunta_quiz_1 = ({{
-    "pergunta":"Quem foi o Criador do Python?",
-    "respostas":["Bill Gates","Elon Musk","Guido Van Rossum"],
-    "correta": "Guido Van Rossum"
-},{
-    "pergunta":"Qual ano Guido Van Rossum criou Python?",
-    "respostas":""
-}
-})
-
+pergunta_quiz_1 = [
+    {
+        "pergunta": "Quem foi o Criador do Python?",
+        "respostas": ["Bill Gates","Elon Musk","Guido Van Rossum"],
+        "correta": "Guido Van Rossum"
+    },
+    {
+        "pergunta": "Qual ano Guido Van Rossum criou o Python?",
+        "respostas": ["1996","1999","1989"],
+        "correta": "1989"
+    },
+    {
+        "pergunta": "Onde Guido Van Rossum está a trabalhar?",
+        "respostas": ["Apple","Microsoft","Sony"],
+        "correta": "Microsoft"
+    }
+]
+pergunta_quiz_2 = [
+    {
+        "pergunta": "Quem foi o Criador do java?",
+        "respostas": ["yukihiro matsumoto","James Arthur Gosling","Guido Van Rossum"],
+        "correta": "Guido Van Rossum"
+    },
+    {
+        "pergunta": "Qual ano James criou o java?",
+        "respostas": ["1991","1999","1989"],
+        "correta": "1991"
+    },
+    {
+        "pergunta": "Qual Universidade ele Estudou?",
+        "respostas": ["Calgary","TUM","Oxford"],
+        "correta": "Calgary"
+    }
+]
+pergunta_quiz_3 = [
+    {
+        "pergunta": "Quem foi o Criador do java?",
+        "respostas": ["yukihiro matsumoto","James Arthur Gosling","Guido Van Rossum"],
+        "correta": "Guido Van Rossum"
+    },
+    {
+        "pergunta": "Qual ano James criou o java?",
+        "respostas": ["1991","1999","1989"],
+        "correta": "1991"
+    },
+    {
+        "pergunta": "Qual Universidade ele Estudou?",
+        "respostas": ["Calgary","TUM","Oxford"],
+        "correta": "Calgary"
+    }
+]
 class TelaPrincipal(Screen):
     lista = ObjectProperty(None)
 
@@ -39,8 +80,8 @@ class TelaPrincipal(Screen):
         ]
 
     def abrir_detalhes(self, item):
-          tela_detalhes = self.manager.get_screen('detalhes')
-          tela_detalhes.atualizar_conteudo
+          tela_detalhes = self.manager.get.screen('detalhes')
+          tela_detalhes.atualizar_conteudo(item)
           self.manager_current = 'detalhes'
 
 class TelaDetalhes(Screen):
@@ -58,4 +99,4 @@ class Multiquiz(App):
     def build(self):
         return Gerenciador()
 if __name__ == "__main__":
-    MultiQuiz.App().run()
+    MultiQuiz().run()
