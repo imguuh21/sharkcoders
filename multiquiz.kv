@@ -1,0 +1,54 @@
+<Gerenciador>:
+    TelaPrincipal:
+    TelaDetalhes:
+
+
+<TelaPrincipal>:
+    name: "principal"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Lista de Quizzes"
+            size_hint_y: .1
+            font_size: 30
+
+        ListaQuizes:
+            id: lista_quizes
+
+
+<ListaQuizes>:
+    viewclass: "Button"
+
+    RecycleBoxLayout:
+        default_size: None, dp(60)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: "vertical"
+
+
+
+<TelaDetalhes>:
+    name: "detalhes"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 20
+
+        Label:
+            id: titulo
+            text: ""
+            font_size: 30
+
+        Label:
+            id: descricao
+            text: ""
+
+        Button:
+            text: "Voltar"
+            size_hint_y: .2
+            on_release:
+                app.root.current = "principal"
