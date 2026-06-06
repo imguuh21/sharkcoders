@@ -1,54 +1,117 @@
 <Gerenciador>:
     TelaPrincipal:
+        name: 'principal'
     TelaDetalhes:
+        name: 'detalhes'
+    TelaJogo:
+        name: 'jogo'
 
+<ButtonHolder@Button>
+    text: ''
+    size_hint_y: None
+    height: '80dp'
+    font_size: '18sp'
+    background_normal: ''
+    background_color: (0.2, 0.6, 0.8, 1)
 
 <TelaPrincipal>:
-    name: "principal"
-
     BoxLayout:
-        orientation: "vertical"
+        orientation: 'vertical'
+        padding: '10dp'
+        spacing: '10dp'
 
         Label:
-            text: "Lista de Quizzes"
-            size_hint_y: .1
-            font_size: 30
+            text: "Selecione um Quiz"
+            font_size: '24sp'
+            size_hint_y: None
+            height: '50dp'
+            canvas.before:
+                Color:
+                    rgba: (0.1, 0.1, 0.2, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
 
         ListaQuizes:
             id: lista_quizes
-
-
-<ListaQuizes>:
-    viewclass: "Button"
-
-    RecycleBoxLayout:
-        default_size: None, dp(60)
-        default_size_hint: 1, None
-        size_hint_y: None
-        height: self.minimum_height
-        orientation: "vertical"
-
-
+            viewclass: "ButtonHolder"
+            RecycleBoxLayout:
+                default_size: None, dp(80)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: '10dp'
 
 <TelaDetalhes>:
-    name: "detalhes"
-
     BoxLayout:
-        orientation: "vertical"
-        padding: 20
-        spacing: 20
+        orientation: 'vertical'
+        padding: '20dp'
+        spacing: '20dp'
 
         Label:
-            id: titulo
+            id: titulo_quiz
             text: ""
-            font_size: 30
+            font_size: '28sp'
+            bold: True
+            size_hint_y: None
+            height: '60dp'
 
         Label:
-            id: descricao
+            id: detalhes_quiz
             text: ""
+            font_size: '18sp'
+            halign: 'center'
+            valign: 'middle'
+            text_size: self.width, None
+
+        Button:
+            text: "Iniciar Quiz"
+            size_hint_y: None
+            height: '60dp'
+            background_color: (0.2, 0.8, 0.2, 1)
+            on_release: root.iniciar_quiz()
 
         Button:
             text: "Voltar"
-            size_hint_y: .2
-            on_release:
-                app.root.current = "principal"
+            size_hint_y: None
+            height: '50dp'
+            background_color: (0.8, 0.2, 0.2, 1)
+            on_release: root.manager.current = 'principal'
+
+<TelaJogo>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '20dp'
+        spacing: '15dp'
+
+        Label:
+            text: root.pergunta_texto
+            font_size: '22sp'
+            halign: 'center'
+            text_size: self.width, None
+
+        Button:
+            text: root.opcoes[0] if len(root.opcoes) > 0 else ""
+            opacity: 1 if self.text != "" else 0
+            disabled: self.text == ""
+            on_release: root.responder(self.text)
+
+        Button:
+            text: root.opcoes[1] if len(root.opcoes) > 1 else ""
+            opacity: 1 if self.text != "" else 0
+            disabled: self.text == ""
+            on_release: root.responder(self.text)
+
+        Button:
+            text: root.opcoes[2] if len(root.opcoes) > 2 else ""
+            opacity: 1 if self.text != "" else 0
+            disabled: self.text == ""
+            on_release: root.responder(self.text)
+
+        Button:
+            text: "Desistir"
+            size_hint_y: None
+            height: '50dp'
+            background_color: (0.8, 0.2, 0.2, 1)
+            on_release: root.manager.current = 'principal'
